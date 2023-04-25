@@ -7,7 +7,7 @@ Get-ADForest | Export-Csv -Path .\ADFOREST.csv -NoTypeInformation
 Get-ADFineGrainedPasswordPolicy -filter * | Export-Csv -Path .\GRAINEDPASSWORDPOLICY.csv -NoTypeInformation
 Get-ADDefaultDomainPasswordPolicy | Export-Csv -Path .\DEFAULTPASSWORDPOLICY.csv -NoTypeInformation
 Get-ADDomainController -filter * | select hostname, operatingsystem | Export-Csv -Path .\DOMAINCONTROLLER.csv -NoTypeInformation
-Write-Host  "Pobieram informacje o kontach uytkownikw"
+Write-Host  "Pobieram informacje o kontach uzytkownikw"
 Search-ADAccount -AccountDisabled | select name | Export-Csv -Path .\DISABLEACCOUNT.csv -NoTypeInformation
 get-aduser -filter * -properties Name, PasswordNeverExpires | where {$_.passwordNeverExpires -eq "true" } | Select-Object DistinguishedName,Name,Enabled | Export-Csv -Path .\PASSWORDNEVEREXPIRES.csv -NoTypeInformation
 Search-ADAccount -LockedOut | Export-Csv -Path .\LOCKEDACCOUNT.csv -NoTypeInformation
