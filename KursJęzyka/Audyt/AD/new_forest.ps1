@@ -32,5 +32,6 @@ function New-DirectoryForest {
 			WarningAction                 = 'Ignore'
 		}
 		$null = Install-ADDSForest @forestParams
+        
 	}
 }
