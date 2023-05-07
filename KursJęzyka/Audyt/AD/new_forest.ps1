@@ -18,9 +18,6 @@ function New-DirectoryForest {
 		[Parameter()]
 		[string]$ForestMode = 'WinThreshold'
 	)
-
-	Invoke-Command -VMName $VMName -Credential $Credential -ScriptBlock {
-
 		Install-windowsfeature -Name AD-Domain-Services
 		
 		$forestParams = @{
@@ -31,7 +28,6 @@ function New-DirectoryForest {
 			SafeModeAdministratorPassword = (ConvertTo-SecureString -AsPlainText -String $using:SafeModePassword -Force)
 			WarningAction                 = 'Ignore'
 		}
-		$null = Install-ADDSForest @forestParams
+		Install-ADDSForest @forestParams
         
-	}
 }
