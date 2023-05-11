@@ -1,0 +1,1 @@
+Publish-Module -Path c:\hw -Repository Repozytorium -Force
